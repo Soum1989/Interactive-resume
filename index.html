@@ -2,125 +2,309 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Soumyendu Dey | Interactive Resume</title>
-
-<meta name="description"
-content="Interactive resume and portfolio of Soumyendu Dey, Revenue Manager and AI-Powered Product Builder.">
-
 <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 9pt;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.32;
+  }
+  /* PAGE */
+  @page { size: A4; margin: 10mm 11mm; }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  /* HEADER */
+  .header { border-bottom: 2.5px solid #1a4a8a; padding-bottom: 6px; margin-bottom: 7px; }
+  .name { font-size: 18pt; font-weight: 700; color: #1a4a8a; }
+  .role { font-size: 9.5pt; color: #2e6dc4; font-weight: 600; margin: 2px 0 4px; }
+  .contact { font-size: 8.2pt; color: #333; }
+  .contact span { margin-right: 12px; }
+  .contact span::before { content: "• "; color: #1a4a8a; }
+  .contact span:first-child::before { content: ""; }
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f8fafc;
-}
+  /* SUMMARY */
+  .summary {
+    background: #eef3fb;
+    border-left: 3px solid #1a4a8a;
+    padding: 4px 8px;
+    font-size: 8.5pt;
+    margin-bottom: 7px;
+  }
 
-.hero{
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-}
+  /* TWO-COL via table */
+  .layout { width: 100%; border-collapse: collapse; }
+  .lcol { width: 61%; vertical-align: top; padding-right: 10px; }
+  .rcol { width: 39%; vertical-align: top; padding-left: 10px; border-left: 1.5px solid #d0d8e8; }
 
-.hero h1{
-    font-size:2.5rem;
-    margin-bottom:10px;
-}
+  /* SECTION */
+  .sec { margin-bottom: 9px; }
+  .sec-title {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    color: #1a4a8a;
+    border-bottom: 1px solid #c0cfe8;
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+  }
 
-.hero p{
-    font-size:1.1rem;
-    opacity:0.9;
-}
+  /* SKILLS */
+  .sk { margin-bottom: 2.5px; font-size: 8.5pt; }
+  .sk b { color: #222; }
 
-.links{
-    margin-top:25px;
-}
+  /* JOB */
+  .job { margin-bottom: 6px; }
+  .jh { display: flex; justify-content: space-between; }
+  .jt { font-weight: 700; font-size: 9pt; }
+  .jd { font-size: 8pt; color: #555; }
+  .jc { font-size: 8.5pt; color: #2e6dc4; font-weight: 600; margin-bottom: 2px; }
+  ul.bl { margin-left: 11px; }
+  ul.bl li { margin-bottom: 1px; font-size: 8.5pt; }
 
-.links a{
-    display:inline-block;
-    margin:8px;
-    padding:12px 20px;
-    text-decoration:none;
-    color:white;
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:8px;
-    transition:0.3s;
-}
+  /* PROJECT */
+  .proj { margin-bottom: 5px; }
+  .pn { font-weight: 700; font-size: 8.8pt; color: #1a4a8a; }
+  .ps { font-size: 8pt; color: #555; font-style: italic; margin-bottom: 1px; }
+  .proj p { font-size: 8.5pt; }
 
-.links a:hover{
-    background:white;
-    color:#0f172a;
-}
+  /* EDU */
+  .edu { margin-bottom: 4px; }
+  .ed { font-weight: 700; font-size: 8.8pt; }
+  .ei { font-size: 8.2pt; color: #444; }
+  .ey { font-size: 7.8pt; color: #666; }
 
-.resume-section{
-    width:100%;
-    height:100vh;
-}
+  /* CERT */
+  .ci { font-size: 8.2pt; margin-bottom: 2px; padding-left: 9px; position: relative; }
+  .ci::before { content: "✓"; position: absolute; left: 0; color: #2e6dc4; font-size: 8pt; }
 
-iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .tag {
+    background: #e8eef8; color: #1a4a8a;
+    border: 1px solid #b5c8e8; border-radius: 2px;
+    padding: 1px 5px; font-size: 7.8pt; font-weight: 600;
+  }
 
-.footer{
-    text-align:center;
-    padding:20px;
-    color:#666;
-    background:white;
-}
+  .hl { color: #1a4a8a; font-weight: 700; }
+  a { color: #2e6dc4; text-decoration: none; }
 
+  /* right col small text */
+  .rp { font-size: 8.2pt; margin-bottom: 3px; }
+  .links-box { font-size: 8pt; line-height: 1.55; }
 </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<h1>Soumyendu Dey</h1>
-
-<p>
-Revenue Manager | AI-Powered Product Builder
-</p>
-
-<div class="links">
-
-<a href="https://github.com/Soum1989" target="_blank">
-GitHub
-</a>
-
-<a href="https://soumyendu.my.canva.site/myproductportfolio" target="_blank">
-Portfolio
-</a>
-
-<a href="https://github.com/Soum1989/Interactive-resume" target="_blank">
-Source Code
-</a>
-
+<!-- HEADER -->
+<div class="header">
+  <div class="name">SOUMYENDU DEY</div>
+  <div class="role">Generative AI Developer &nbsp;|&nbsp; Prompt Engineer &nbsp;|&nbsp; AI-Powered Product Builder</div>
+  <div class="contact">
+    <span>+91-8006733731</span>
+    <span>taursoum@gmail.com</span>
+    <span>linkedin.com/in/soumyendudey</span>
+    <span>github.com/Soum1989</span>
+    <span>New Delhi</span>
+  </div>
 </div>
 
-</section>
-
-<section class="resume-section">
-
-<iframe
-src="https://claude.site/public/artifacts/4269dc7e-2fe6-4122-97b0-fd5f905642f9/embed"
-allow="clipboard-write"
-allowfullscreen>
-</iframe>
-
-</section>
-
-<div class="footer">
-© 2026 Soumyendu Dey
+<!-- SUMMARY -->
+<div class="summary">
+  GenAI developer and prompt engineer with hands-on experience building LLM-powered agents, RAG solutions, and AI-driven web apps on Lyzr AI Studio (GPT-4o), IBM Watsonx, Flask, and React. Skilled in prompt engineering (zero-shot, few-shot, chain-of-thought), vector knowledge bases (Qdrant), and deploying AI products on cloud/edge environments. MBA in Business Analytics (BITS-Pilani) · Executive Program in Data-Driven Product Management (IIT Guwahati) · 12+ years domain experience.
 </div>
+
+<!-- TWO-COLUMN -->
+<table class="layout"><tr>
+
+<!-- ═══ LEFT COLUMN ═══ -->
+<td class="lcol">
+
+  <!-- CORE SKILLS -->
+  <div class="sec">
+    <div class="sec-title">Core AI &amp; Technical Skills</div>
+    <div class="sk"><b>GenAI / LLMs:</b> GPT-4o, IBM Watsonx, Lyzr AI Studio, LLM fine-tuning concepts, Foundation Models</div>
+    <div class="sk"><b>Prompt Engineering:</b> Zero-shot, Few-shot, Chain-of-Thought, Tree-of-Thought, Prompt Templates, Output Evaluation &amp; Refinement</div>
+    <div class="sk"><b>RAG &amp; Vector Search:</b> Retrieval-Augmented Generation, Qdrant Vector DB, Semantic Similarity (threshold 0.8), Retrieval Orchestration</div>
+    <div class="sk"><b>NLP:</b> TextBlob, Sentiment Analysis, NLP pipelines, AI output evaluation &amp; benchmarking</div>
+    <div class="sk"><b>Programming:</b> Python (Flask, Pandas, TextBlob, OpenPyXL), JavaScript / TypeScript, React (CRA, Hooks)</div>
+    <div class="sk"><b>Cloud / Deployment:</b> Render, Vercel, EdgeOne Pages (Tencent CDN), Supabase (PostgreSQL), Edge-first architecture</div>
+    <div class="sk"><b>MLOps-adjacent:</b> GitHub CI/CD, version control, monitoring patterns, structured logging</div>
+    <div class="sk"><b>Tools:</b> Figma, Jira/Scrum, Tableau, Canva, Loom, PapaParse</div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="sec">
+    <div class="sec-title">Professional Experience</div>
+
+    <div class="job">
+      <div class="jh"><div class="jt">Revenue &amp; Data Analyst</div><div class="jd">Oct 2025 – Present</div></div>
+      <div class="jc">Predictive Minds · Remote / Part-time</div>
+      <ul class="bl">
+        <li>Leveraged <span class="hl">data-driven models</span> to optimise ADR by analysing occupancy, compset dynamics &amp; historical data — mirrors <span class="hl">GenAI solution evaluation &amp; benchmarking</span>.</li>
+        <li>Automated OTA promotion workflows, increasing visibility — analogous to <span class="hl">deploying scalable AI services</span> for real business use-cases.</li>
+        <li>Managed RFPs with 100% data transparency, applying structured validation aligned with <span class="hl">MLOps quality assurance</span>.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="jh"><div class="jt">Generative AI Language Trainer</div><div class="jd">Jun 2024 – Oct 2024</div></div>
+      <div class="jc">Outlier AI</div>
+      <ul class="bl">
+        <li><span class="hl">Reviewed, diagnosed &amp; refined AI-generated responses</span> — directly applies <span class="hl">LLM output evaluation, prompt refinement &amp; benchmarking</span>.</li>
+        <li>Identified model failure modes and recommended targeted improvements; performed <span class="hl">agent/model quality assessment</span> at scale.</li>
+        <li>Rephrased AI outputs for clarity and intent alignment — hands-on <span class="hl">prompt engineering &amp; NLP refinement</span>.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="jh"><div class="jt">Cluster Operations Manager</div><div class="jd">2023 – 2024</div></div>
+      <div class="jc">Mainstreet Marketplace, New Delhi</div>
+      <ul class="bl">
+        <li>Drove <span class="hl">10% MoM growth</span> (Nov) &amp; <span class="hl">9% MoM growth</span> (Dec) through data-led decisions — demonstrates metric-driven execution applicable to <span class="hl">GenAI KPI benchmarking</span>.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="jh"><div class="jt">Cluster Manager</div><div class="jd">2022 – 2023</div></div>
+      <div class="jc">Melorra Jewellery</div>
+      <ul class="bl">
+        <li>Scaled customer base <span class="hl">75 → 2,300</span> in 12 months; <span class="hl">150% YoY growth</span> (Aug 2023) — showcases <span class="hl">scalability thinking</span> central to GenAI product design.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="sec">
+    <div class="sec-title">GenAI &amp; AI-Powered Projects</div>
+
+    <div class="proj">
+      <div class="pn">🤖 PIMP MY PRD — AI Clarity Agent for Product Managers</div>
+      <div class="ps">Lyzr AI Studio · GPT-4o · Qdrant Vector DB · Prompt Engineering · RAG</div>
+      <p>Production-deployed <span class="hl">LLM agent</span> detecting vague PRD language and rewriting to dev-ready specs. Custom prompts + <span class="hl">Qdrant vector KB (threshold 0.8)</span> for semantic matching. Peer-validated at Lyzr Teardown Challenge May 2025. Live: <a href="https://studio.lyzr.ai/agent/682c9662f2196bac42fd6050">studio.lyzr.ai</a></p>
+    </div>
+
+    <div class="proj">
+      <div class="pn">🛒 Kirana+ — WhatsApp-native Grocery Ordering</div>
+      <div class="ps">IBM Watsonx · Lablab AI Hackathon · Figma · Jira</div>
+      <p><span class="hl">Chatbot trained via iterative RAG on IBM Watsonx</span>. Full lifecycle: survey → backlog (Jira) → UX (Figma) → hackathon demo. End-to-end GenAI solution development.</p>
+    </div>
+
+    <div class="proj">
+      <div class="pn">🧠 Sentiment Analyser Web App</div>
+      <div class="ps">Python · Flask · TextBlob NLP · Pandas · Render</div>
+      <p>Real-time NLP sentiment classification on CSV/XLSX. <span class="hl">Deployed on Render</span> (&lt;512 MiB). Demonstrates <span class="hl">Python + NLP pipeline + cloud deployment</span>. Live: <a href="https://sentiment-analysis-mrvu.onrender.com">sentiment-analysis-mrvu.onrender.com</a></p>
+    </div>
+
+    <div class="proj">
+      <div class="pn">🌐 Telemetry Unifier — Tencent Kepler Plan S3 🏆 Best Practice Award</div>
+      <div class="ps">React · TypeScript · EdgeOne CDN · JSON Schema Unification</div>
+      <p>Industrial telemetry dashboard unifying multi-schema JSON from turbine generators. <span class="hl">Award-winning hackathon project</span> deployed globally on EdgeOne CDN — scalable AI-adjacent edge architecture.</p>
+    </div>
+
+    <div class="proj">
+      <div class="pn">🐛 Bug Triage AI App</div>
+      <div class="ps">React · Supabase (PostgreSQL) · Vercel · GitHub CI/CD</div>
+      <p>Full-stack bug reporting with Markdown generation &amp; CSV export. Demonstrates <span class="hl">CI/CD, cloud DB integration &amp; production deployment</span> — aligned with MLOps/LLMOps practices.</p>
+    </div>
+
+  </div>
+
+</td>
+
+<!-- ═══ RIGHT COLUMN ═══ -->
+<td class="rcol">
+
+  <!-- KEY SKILLS -->
+  <div class="sec">
+    <div class="sec-title">Key Skills</div>
+    <div class="tags">
+      <span class="tag">LLM / Foundation Models</span>
+      <span class="tag">Prompt Engineering</span>
+      <span class="tag">RAG Architecture</span>
+      <span class="tag">Vector DB (Qdrant)</span>
+      <span class="tag">Agent Evaluation</span>
+      <span class="tag">NLP Pipelines</span>
+      <span class="tag">Python + Flask</span>
+      <span class="tag">Cloud Deploy</span>
+      <span class="tag">CI/CD (GitHub)</span>
+      <span class="tag">Benchmarking</span>
+      <span class="tag">IBM Watsonx</span>
+      <span class="tag">GPT-4o</span>
+      <span class="tag">React / TypeScript</span>
+      <span class="tag">Supabase / PostgreSQL</span>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="sec">
+    <div class="sec-title">Education</div>
+    <div class="edu">
+      <div class="ed">EPDDPM (Pursuing)</div>
+      <div class="ei">IIT Guwahati</div>
+      <div class="ey">Executive Program – Data Driven Product Mgmt</div>
+    </div>
+    <div class="edu">
+      <div class="ed">MBA – Business Analytics</div>
+      <div class="ei">BITS-Pilani · 2024</div>
+      <div class="ey">Tableau, Python, Data Visualisation</div>
+    </div>
+    <div class="edu">
+      <div class="ed">MBA – Operations Management</div>
+      <div class="ei">Sikkim Manipal University · 2013</div>
+    </div>
+    <div class="edu">
+      <div class="ed">BSc – Hospitality &amp; Hotel Administration</div>
+      <div class="ei">IHM Bangalore · 2010</div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="sec">
+    <div class="sec-title">Certifications &amp; Training</div>
+    <div class="ci">Google AI-Powered Performance Ads</div>
+    <div class="ci">Technology Job Simulation – Deloitte Australia (Forage)</div>
+    <div class="ci">Scrum Master Assessment – LearnTube</div>
+    <div class="ci">UI/UX Assessment – LearnTube</div>
+    <div class="ci">User Flow &amp; Task Flow – LearnTube</div>
+    <div class="ci">Figma Assessment – LearnTube</div>
+    <div class="ci">MSPE – IIT Delhi (Dept. of Management Studies)</div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="sec">
+    <div class="sec-title">Awards &amp; Hackathons</div>
+    <div class="ci"><b>🏆 Best Practice Award</b> – Tencent Kepler Plan S3</div>
+    <div class="ci">IBM Watsonx Challenge – Lablab AI (Kirana+)</div>
+    <div class="ci">Lyzr AI Teardown Challenge May 2025 – PIMP MY PRD</div>
+    <div class="ci">IIT Guwahati Strategy Sprint 2025 – YouPay FinTech</div>
+  </div>
+
+  <!-- OTHER PROJECTS -->
+  <div class="sec">
+    <div class="sec-title">Other Notable Projects</div>
+    <div class="rp"><b>ScrumConnect</b> – Agile PM platform for BITS-Pilani; ideation to launch.</div>
+    <div class="rp"><b>YouPay FinTech Dossier</b> – Data strategy for retention; IIT Guwahati Sprint 2025.</div>
+    <div class="rp"><b>Bharat Bazaar</b> – Omnichannel transformation; AI/ML personalisation engine design.</div>
+    <div class="rp"><b>Sitaare Zameen Par</b> – Gamified inclusion platform PRD; 85%+ completion rate.</div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="sec">
+    <div class="sec-title">Portfolio &amp; Links</div>
+    <div class="links-box">
+      <div>🌐 <a href="https://soumyendu.my.canva.site/myproductportfolio">Product Portfolio</a></div>
+      <div>💻 <a href="https://github.com/Soum1989">github.com/Soum1989</a></div>
+      <div>🔗 <a href="https://www.linkedin.com/in/soumyendudey/">linkedin.com/in/soumyendudey</a></div>
+      <div>🤖 <a href="https://studio.lyzr.ai/agent/682c9662f2196bac42fd6050">PIMP MY PRD Live Agent</a></div>
+      <div>📊 <a href="https://sentiment-analysis-mrvu.onrender.com">Sentiment Analyser App</a></div>
+      <div>🏭 <a href="https://telemetry-unifier-kepler.edgeone.app/">Telemetry Unifier Dashboard</a></div>
+    </div>
+  </div>
+
+</td>
+</tr></table>
 
 </body>
 </html>
